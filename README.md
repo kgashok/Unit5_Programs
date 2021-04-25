@@ -24,6 +24,10 @@
 |prog71.c | function pointers - example 1
 |prog72.c | function pointers - example 2
 |prog73.c | function pointers - example 3
+|**LINKED LIST PROGRAMS** | |
+|list.c | basic linked list functions
+|list2.c | inserting nodes in specific places
+|list3.c | sorting of a linked list
 
 
 [prog11.c]: /prog11.c
