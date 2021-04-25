@@ -3,7 +3,7 @@
 |FILENAME  | REMARKS |
 |:--------- |:--------|
 |**TEXT** | | 
-|prog11.c | sequential read and write - simple |
+|[prog11.c] | sequential read and write - simple |
 |prog12.c | sequential write and read - struct obj |
 |prog13.c | sequential write to file - compound |
 |prog14.c | sequential read from file - compound |
@@ -26,5 +26,5 @@
 |prog73.c | function pointers - example 3
 
 
-
+[prog11.c]: /prog11.c
 [cp]: http://man7.org/linux/man-pages/man1/cp.1.html
