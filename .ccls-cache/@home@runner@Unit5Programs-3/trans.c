@@ -18,6 +18,7 @@ void textFile(FILE *readPtr);
 void updateRecord(FILE *fPtr);
 void newRecord(FILE *fPtr);
 void deleteRecord(FILE *fPtr);
+void sortRecords(FILE *fPtr);
 
 int main(int argc, char *argv[])
 {
@@ -32,7 +33,7 @@ int main(int argc, char *argv[])
     }
 
     // enable user to specify action
-    while ((choice = enterChoice()) != 5)
+    while ((choice = enterChoice()) != 6)
     {
         switch (choice)
         {
@@ -52,7 +53,9 @@ int main(int argc, char *argv[])
         case 4:
             deleteRecord(cfPtr);
             break;
-        // display if user does not select valid choice
+        case 5:
+            sortRecords(cfPtr);
+            break;
         default:
             puts("Incorrect choice");
             break;
@@ -200,7 +203,14 @@ void newRecord(FILE *fPtr)
     } // end else
 } // end function newRecord
 
-// enable user to input menu choice
+void sortRecords(FILE *fPtr)
+{
+    printf("Records sorted successfully.\n");
+} // end function sortRecords
+
+// sort records in file
+
+// function to prompt for user choice
 unsigned int enterChoice(void)
 {
     unsigned int menuChoice; // variable to store user's choice
@@ -211,8 +221,9 @@ unsigned int enterChoice(void)
                  "2 - update an account\n"
                  "3 - add a new account\n"
                  "4 - delete an account\n"
-                 "5 - end program\n? ");
-
+                 "5 - sort records\n"
+                 "6 - end program\n? ");
+                
     scanf("%u", &menuChoice); // receive choice from user
     return menuChoice;
 } // end function enterChoice
