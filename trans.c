@@ -222,6 +222,7 @@ int compareAccounts(const void *a, const void *b)
     return (clientB->balance - clientA->balance);
 }
 
+// sort records in file
 void sortRecords(FILE *fPtr)
 {
     struct clientData clients[100]; // assuming a maximum of 100 records
@@ -256,7 +257,6 @@ void sortRecords(FILE *fPtr)
     printf("Records sorted successfully.\n");
 } // end function sortRecords
 
-// sort records in file
 
 // function to prompt for user choice
 unsigned int enterChoice(void)
