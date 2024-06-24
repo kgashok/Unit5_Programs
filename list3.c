@@ -218,7 +218,7 @@ void ndisplay()
  */
 void sort_list_rec()
 {
-    puts("Not yet implemented");
+    puts(" Not yet implemented");
 }
 
 /* Selection sort of the nodes

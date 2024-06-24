@@ -3,7 +3,7 @@ IDIR=.
 _DEPS = list.h
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-CFLAGS=-Wno-unused-result
+CFLAGS=-Wunsed-result
 
 objects = main \
   prog11 prog12 prog13 prog14 prog15 \
