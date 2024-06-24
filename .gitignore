@@ -53,5 +53,6 @@ Mkfile.old
 dkms.conf
 
 # other folders 
-.ccls-cache/*.*
+.ccls-cache/
 obj/
+*.blob
