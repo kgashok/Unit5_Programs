@@ -203,8 +203,36 @@ void newRecord(FILE *fPtr)
     } // end else
 } // end function newRecord
 
+// comparison function for qsort
+int compareAccounts(const void *a, const void *b)
+{
+    struct clientData *clientA = (struct clientData *)a;
+    struct clientData *clientB = (struct clientData *)b;
+    return (clientA->acctNum - clientB->acctNum);
+}
+
 void sortRecords(FILE *fPtr)
 {
+    struct clientData clients[100]; // assuming a maximum of 100 records
+    struct clientData temp; // temporary struct for swapping
+    int count = 0;
+
+    // read records into array
+    rewind(fPtr);
+    while (!feof(fPtr) && count < 100)
+    {
+        fread(&clients[count], sizeof(struct clientData), 1, fPtr);
+        if (clients[count].acctNum != 0) // only count valid records
+        {
+            count++;
+        }
+    }
+
+    // sort the array using qsort 
+    if (count > 0) {
+        qsort(clients, count, sizeof(struct clientData), compareAccounts);
+    }
+    
     printf("Records sorted successfully.\n");
 } // end function sortRecords
 
