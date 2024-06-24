@@ -19,6 +19,7 @@ void updateRecord(FILE *fPtr);
 void newRecord(FILE *fPtr);
 void deleteRecord(FILE *fPtr);
 void sortRecords(FILE *fPtr);
+void displayClientData(const struct clientData clients[], int size);
 
 int main(int argc, char *argv[])
 {
@@ -203,8 +204,55 @@ void newRecord(FILE *fPtr)
     } // end else
 } // end function newRecord
 
+// display client data
+void displayClientData(const struct clientData clients[], int size)
+{
+    printf("%-6s%-16s%-11s%10s\n", "Acct", "Last Name", "First Name", "Balance");
+    for (int i = 0; i < size; i++)
+    {
+        printf("%-6d%-16s%-11s%10.2f\n", clients[i].acctNum, clients[i].lastName, clients[i].firstName, clients[i].balance);
+    }
+} // end function displayClientData
+
+// comparison function for qsort
+int compareAccounts(const void *a, const void *b)
+{
+    struct clientData *clientA = (struct clientData *)a;
+    struct clientData *clientB = (struct clientData *)b;
+    return (clientB->balance - clientA->balance);
+}
+
 void sortRecords(FILE *fPtr)
 {
+    struct clientData clients[100]; // assuming a maximum of 100 records
+    struct clientData temp; // temporary struct for swapping
+    int count = 0;
+
+    // read records into array
+    rewind(fPtr);
+    while (!feof(fPtr) && count < 100)
+    {
+        fread(&clients[count], sizeof(struct clientData), 1, fPtr);
+        if (clients[count].acctNum != 0) // only count valid records
+        {
+            count++;
+        }
+    }
+
+    // sort the array using qsort 
+    if (count > 0) {
+        // display records before sorting
+        printf("\nRecords before sorting:\n");
+        displayClientData(clients, count);
+
+        // sort the array using qsort
+        qsort(clients, count, sizeof(struct clientData), compareAccounts);
+
+        // display records after sorting
+        printf("\nRecords after sorting:\n");
+        displayClientData(clients, count);
+    }
+    
     printf("Records sorted successfully.\n");
 } // end function sortRecords
 

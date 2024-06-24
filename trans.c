@@ -219,7 +219,7 @@ int compareAccounts(const void *a, const void *b)
 {
     struct clientData *clientA = (struct clientData *)a;
     struct clientData *clientB = (struct clientData *)b;
-    return (clientA->acctNum - clientB->acctNum);
+    return (clientB->balance - clientA->balance);
 }
 
 void sortRecords(FILE *fPtr)
