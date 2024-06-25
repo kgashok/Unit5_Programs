@@ -40,6 +40,7 @@ prog*
 trans 
 list* 
 mycopy 
+testgen
 
 # Debug files
 *.dSYM/
