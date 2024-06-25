@@ -28,7 +28,8 @@
 |list.c | basic linked list functions
 |list2.c | inserting nodes in specific places
 |list3.c | sorting of a linked list
-
+|testgen | test data creating program
+|records.bin| test data for testing 100+ records
 
 [prog11.c]: /prog11.c
 [cp]: http://man7.org/linux/man-pages/man1/cp.1.html
