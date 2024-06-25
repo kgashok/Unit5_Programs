@@ -12,6 +12,8 @@ struct client_data
     double balance;       // account balance
 };                        // end structure client_data
 
+#define MAX_RECORDS 150
+
 // prototypes
 unsigned int enter_choice(void);
 void text_file(FILE *read_ptr);
@@ -225,13 +227,13 @@ int compare_accounts(const void *a, const void *b)
 // sort records in file
 void sort_records(FILE *f_ptr)
 {
-    struct client_data clients[100]; // assuming a maximum of 100 records
+    struct client_data clients[MAX_RECORDS]; // assuming a maximum of 100 records
     struct client_data temp; // temporary struct for swapping
     int count = 0, result = 0;
 
     // read records into array
     rewind(f_ptr);
-    while (!feof(f_ptr) && count < 100)
+    while (!feof(f_ptr) && count < MAX_RECORDS)
     {
         result = fread(&clients[count], sizeof(struct client_data), 1, f_ptr);
         if (result && clients[count].acct_num != 0) // only count valid records
