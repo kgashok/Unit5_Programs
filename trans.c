@@ -227,14 +227,14 @@ void sort_records(FILE *f_ptr)
 {
     struct client_data clients[100]; // assuming a maximum of 100 records
     struct client_data temp; // temporary struct for swapping
-    int count = 0;
+    int count = 0, result = 0;
 
     // read records into array
     rewind(f_ptr);
     while (!feof(f_ptr) && count < 100)
     {
-        fread(&clients[count], sizeof(struct client_data), 1, f_ptr);
-        if (clients[count].acct_num != 0) // only count valid records
+        result = fread(&clients[count], sizeof(struct client_data), 1, f_ptr);
+        if (result && clients[count].acct_num != 0) // only count valid records
         {
             count++;
         }
